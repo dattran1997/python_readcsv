@@ -23,23 +23,38 @@ with open('./record.csv') as csv_file:
     print(record)
 
 
+
 # write file record use record from read file record
 
-with open('records.csv','w', newline='') as csvfile:
+with open('./record.csv','w', newline='') as csvfile:
     # print('--------------------')
     # print(record)
+
+    record_list = []
+
+    new_data = {
+        'name': 'dat',
+        'score': '10'
+    }
+    
+    # add new data
+    record_list.append([new_data['name'], new_data['score']])
 
     #creating  a csv writer object
     csvwriter = csv.writer(csvfile)
 
     #writing the fields
-    csvwriter.writerow(['name','score'])
+    csvwriter.writerow(['name', 'score'])
+
+    # load data
+    for data in record:
+        record_list.append([data['name'], data['score']])
+
+    # print('-----------')
+    # print(record_list)
 
     # writing the data rows
-    
-
-    csvwriter.writerows(rows)
-
+    csvwriter.writerows(record_list)
 
 
 
